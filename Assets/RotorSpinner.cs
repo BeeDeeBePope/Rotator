@@ -39,6 +39,11 @@ public class RotorSpinner : MonoBehaviour
     public FloatVariable ProdE;
     public FloatVariable TurbEff;
 
+    private void Start()
+    {
+        
+    }
+
     private void Lol()
     {
         BladeApexSpeed = WindVelocity / 13.8f * 0.12228f;
@@ -68,11 +73,11 @@ public class RotorSpinner : MonoBehaviour
         ProducedEnergy += ElectricalPower * Time.deltaTime;
         EnergyAfterSimulation = ElectricalPower * SimulationTime * 24;
 
-        WindVel.Value = WindVelocity;
-        BladeLen.Value = TurbineBladeLength;
-        SimTime.Value = SimulationTime;
+        WindVelocity = WindVel.Value;
+        TurbineBladeLength = BladeLen.Value;
+        SimulationTime = int.Parse(SimTime.Value.ToString());
         AngularVel.Value = TurbineAngularVelocity;
-        MechPow.Value = TurbineMechanicalPower;
+        MechPow.Value = TurbineMechanicalPower / 1000;
         ProdE.Value = EnergyAfterSimulation / 1000000;
         TurbEff.Value = TurbineEfficiency;
     }

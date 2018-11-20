@@ -11,4 +11,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 144bb28b773045cfab583df921ee5741, type: 3}
   m_Name: WindSpeed
   m_EditorClassIdentifier: 
-  Value: 0
+  Value: 4.8089542

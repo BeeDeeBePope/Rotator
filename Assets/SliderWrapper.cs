@@ -22,6 +22,6 @@ public class SliderWrapper : MonoBehaviour
             Max.text = slider.maxValue.ToString();
             Variable.Value = arg0;
         });
-        slider.onValueChanged.Invoke(1);
+        slider.onValueChanged.Invoke(slider.minValue);
     }
 }

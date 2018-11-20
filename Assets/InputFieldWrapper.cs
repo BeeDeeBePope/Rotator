@@ -1,16 +1,33 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Globalization;
 using UnityEngine;
+using UnityEngine.UI;
 
-public class InputFieldWrapper : MonoBehaviour {
+public class InputFieldWrapper : MonoBehaviour
+{
+    public FloatVariable Variable;
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+    private InputField input;
+
+    private string currentVal;
+
+    private void Awake()
+    {
+        input = GetComponent<InputField>();
+
+        input.onValueChanged.AddListener(arg0 =>
+        {
+            float val = 0;
+            if (float.TryParse(arg0, out val))
+            {
+                Variable.Value = val;
+                currentVal = arg0;
+            }
+            else
+            {
+                input.text = currentVal;
+            }
+            
+        });
+        input.onValueChanged.Invoke("10");
+    }
 }
