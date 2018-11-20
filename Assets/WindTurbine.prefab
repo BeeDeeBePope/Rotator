@@ -742,7 +742,7 @@ MonoBehaviour:
   WindVelocity: 13.8
   TurbineBladeLength: 51.36
   BladeApexSpeed: 0.5
-  SimulationTime: 0
+  SimulationTime: 10
   TurbineAngularVelocity: 1.5
   TurbineCoefficientCp: 0
   TurbineSpeedCoefficientLambda: 0

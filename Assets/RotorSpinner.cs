@@ -66,14 +66,14 @@ public class RotorSpinner : MonoBehaviour
         Rotor.transform.RotateAround(Rotor.transform.position, Rotor.transform.up, -TurbineAngularVelocity * Mathf.Rad2Deg * Time.deltaTime / 1.0f);
         Rotor.transform.localPosition = Vector3.zero;
         ProducedEnergy += ElectricalPower * Time.deltaTime;
-        EnergyAfterSimulation = ElectricalPower * SimulationTime;
+        EnergyAfterSimulation = ElectricalPower * SimulationTime * 24;
 
         WindVel.Value = WindVelocity;
         BladeLen.Value = TurbineBladeLength;
         SimTime.Value = SimulationTime;
         AngularVel.Value = TurbineAngularVelocity;
         MechPow.Value = TurbineMechanicalPower;
-        ProdE.Value = EnergyAfterSimulation;
+        ProdE.Value = EnergyAfterSimulation / 1000000;
         TurbEff.Value = TurbineEfficiency;
     }
 }
