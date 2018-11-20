@@ -9,7 +9,7 @@ public class SliderWrapper : MonoBehaviour
     public TextMeshProUGUI Min;
     public TextMeshProUGUI Max;
 
-    public RotorSpinner Spinner;
+    public FloatVariable Variable;
 
     private Slider slider;
     private void Awake()
@@ -20,6 +20,7 @@ public class SliderWrapper : MonoBehaviour
             Value.text = arg0.ToString();
             Min.text = slider.minValue.ToString();
             Max.text = slider.maxValue.ToString();
+            Variable.Value = arg0;
         });
         slider.onValueChanged.Invoke(1);
     }

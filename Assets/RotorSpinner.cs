@@ -30,7 +30,14 @@ public class RotorSpinner : MonoBehaviour
 
     public float EnergyAfterSimulation;
 
-    public float RPM;
+    [Header("Variables")]
+    public FloatVariable WindVel;
+    public FloatVariable BladeLen;
+    public FloatVariable SimTime;
+    public FloatVariable AngularVel;
+    public FloatVariable MechPow;
+    public FloatVariable ProdE;
+    public FloatVariable TurbEff;
 
     private void Lol()
     {
@@ -60,8 +67,13 @@ public class RotorSpinner : MonoBehaviour
         Rotor.transform.localPosition = Vector3.zero;
         ProducedEnergy += ElectricalPower * Time.deltaTime;
         EnergyAfterSimulation = ElectricalPower * SimulationTime;
+
+        WindVel.Value = WindVelocity;
+        BladeLen.Value = TurbineBladeLength;
+        SimTime.Value = SimulationTime;
+        AngularVel.Value = TurbineAngularVelocity;
+        MechPow.Value = TurbineMechanicalPower;
+        ProdE.Value = EnergyAfterSimulation;
+        TurbEff.Value = TurbineEfficiency;
     }
-
-
-
 }

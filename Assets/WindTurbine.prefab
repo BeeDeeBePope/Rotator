@@ -753,7 +753,13 @@ MonoBehaviour:
   TurbineMechanicalPower: 0
   ElectricalPower: 0
   EnergyAfterSimulation: 0
-  RPM: 0
+  WindVel: {fileID: 11400000, guid: 5f023325042fe6743b7d3da704bfcb72, type: 2}
+  BladeLen: {fileID: 11400000, guid: 76954db4594bd3e409e3809251b0009e, type: 2}
+  SimTime: {fileID: 11400000, guid: 4e1c3fe48e3901342806d30248ebb7d8, type: 2}
+  AngularVel: {fileID: 11400000, guid: a96a171f88f235c46a526dd5e4718c25, type: 2}
+  MechPow: {fileID: 11400000, guid: 3a9ab4c2763fe0f4e904cb819dd2bb28, type: 2}
+  ProdE: {fileID: 11400000, guid: c824d2952493b06488fd8b29c6f37e23, type: 2}
+  TurbEff: {fileID: 11400000, guid: 9aae98fc332c56540ab0e1cc965fc02c, type: 2}
 --- !u!114 &114362517501413690
 MonoBehaviour:
   m_ObjectHideFlags: 1
