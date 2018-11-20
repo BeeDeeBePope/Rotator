@@ -20,8 +20,6 @@ public class SliderWrapper : MonoBehaviour
             Value.text = arg0.ToString();
             Min.text = slider.minValue.ToString();
             Max.text = slider.maxValue.ToString();
-
-            Spinner.SpeedFactor = arg0;
         });
         slider.onValueChanged.Invoke(1);
     }

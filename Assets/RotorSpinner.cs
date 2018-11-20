@@ -8,11 +8,9 @@ public class RotorSpinner : MonoBehaviour
     public float WindVelocity;
     [Range(24, 58)]
     public float TurbineBladeLength;
-    [Range(58, 90)]
+    [Range(0.001f, 0.5f)]
     public float BladeApexSpeed;
     public int SimulationTime;
-
-    public float SpeedFactor = 1;
 
     public float TurbineAngularVelocity = 1.5f;
     public float TurbineCoefficientCp;
@@ -28,16 +26,19 @@ public class RotorSpinner : MonoBehaviour
 
     public float ElectricalPower;
 
-    private float timer;
     private const float AirDensity = 1.225f;
 
-    public float Lolxd;
+    public float EnergyAfterSimulation;
+
+    public float RPM;
 
     private void Lol()
     {
+        BladeApexSpeed = WindVelocity / 13.8f * 0.12228f;
+
         WindTurbineSurface = Mathf.PI * TurbineBladeLength * TurbineBladeLength;
         WindCurrentPower = 1 / 2f * AirDensity * WindTurbineSurface * (WindVelocity * WindVelocity * WindVelocity);
-        BladeApexSpeed = TurbineAngularVelocity / TurbineBladeLength;
+        TurbineAngularVelocity = BladeApexSpeed * TurbineBladeLength;
         TurbineSpeedCoefficientLambda = BladeApexSpeed / WindVelocity;
         TurbineCoefficientCp = 0.02021f - 0.1112f * TurbineSpeedCoefficientLambda +
                                0.1056f * TurbineSpeedCoefficientLambda * TurbineSpeedCoefficientLambda -
@@ -54,12 +55,11 @@ public class RotorSpinner : MonoBehaviour
 
     private void Update()
     {
-        Rotor.transform.RotateAround(Rotor.transform.position, Rotor.transform.up, -TurbineAngularVelocity * Mathf.Rad2Deg * Time.deltaTime / 1.0f);
-        //Rotor.transform.localRotation = Quaternion.SlerpUnclamped(Quaternion.Euler(0, 0, 0), Quaternion.Euler(0, -180, 0), timer);
-        timer += Time.deltaTime * SpeedFactor;
         Lol();
+        Rotor.transform.RotateAround(Rotor.transform.position, Rotor.transform.up, -TurbineAngularVelocity * Mathf.Rad2Deg * Time.deltaTime / 1.0f);
+        Rotor.transform.localPosition = Vector3.zero;
         ProducedEnergy += ElectricalPower * Time.deltaTime;
-        Lolxd = ElectricalPower * 3600 * 24 * 356;
+        EnergyAfterSimulation = ElectricalPower * SimulationTime;
     }
 
 
